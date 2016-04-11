@@ -1,4 +1,9 @@
 #!/bin/bash
 
+# default values from `id` command, Windows users may need to hardcode.
+user=$(id -u)
+user_name=$(id -un)
+group=$(id -g)
+group_name=$(id -gn)
 # run the container as a user to simplify writing files outside the container
-docker run --rm -it -v $(pwd):$(pwd) -w $(pwd) -p 8000:8000 rbrewer123/nikola -U rbrewer -u 1000 -G rbrewer -g 1000 nikola "$@"
+docker run --rm -it -v $(pwd):$(pwd) -w $(pwd) -p 8000:8000 rbrewer123/nikola -U $user_name -u $user -G $group_name -g $group nikola "$@"
