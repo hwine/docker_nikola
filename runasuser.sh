@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 this_program="$0"
 
@@ -108,12 +108,12 @@ while [ "$#" -gt 0 ]; do
 done
 
 
-#echo "user $user"
-#echo "uid $uid"
-#echo "group $group"
-#echo "gid $gid"
-#echo "supplemental $supplemental"
-#echo "program -$@-"
+echo "user $user"
+echo "uid $uid"
+echo "group $group"
+echo "gid $gid"
+echo "supplemental $supplemental"
+echo "program -$@-"
 
 
 if [ -n "$user" ]; then
@@ -158,6 +158,9 @@ fi
 #     exec su -c "$@" $user
 #  
 
+echo $PWD
+ls -lnd $PWD
+id hwine
 if [ -n "$user" ]; then
     # specified user
     if [ -n "$1" ]; then
